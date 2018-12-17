@@ -58,6 +58,11 @@ public class UsersController {
     public ResponseEntity<MessagesResponse> updateUser(User user){
     	return ResponseEntity.status(HttpStatus.OK).body(userService.handleUpdateUser(user));
     }
+    
+    @RequestMapping(value = "delete/{username}",method = RequestMethod.POST)    
+    public ResponseEntity<MessagesResponse> deleteUser(User user){
+    	return ResponseEntity.status(HttpStatus.OK).body(userService.handleDeleteUser(user));
+    }
 	
 
 }
