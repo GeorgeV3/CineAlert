@@ -4,11 +4,9 @@ import java.util.List;
 
 
 import org.adfenp.cinealert.dao.UsersRepo;
-import org.adfenp.cinealert.model.LoginResponse;
+import org.adfenp.cinealert.model.LoginRegisterResponse;
 import org.adfenp.cinealert.model.User;
-import org.adfenp.cinealert.services.LoginService;
-import org.adfenp.cinealert.services.RegisterService;
-import org.adfenp.cinealert.services.UserService;
+import org.adfenp.cinealert.services.LoginRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,11 +25,9 @@ public class UsersController {
 	private UsersRepo usersRepo;
 	
 	@Autowired
-    private LoginService loginService;
+    private LoginRegisterService loginRegisterService;
 	
-	@Autowired
-	private RegisterService registerService;
-	
+
 
     @GetMapping(path = "/getUsers")
     public ResponseEntity<List<User>> getAllUsers(){
@@ -45,13 +41,13 @@ public class UsersController {
     
     
     @GetMapping(path="/login/{username}/{password}")
-    public ResponseEntity<LoginResponse> loginUserSimple(@PathVariable String username, @PathVariable String password){
-        return ResponseEntity.status(HttpStatus.OK).body(loginService.handleLogin(username, password));
+    public ResponseEntity<LoginRegisterResponse> loginUserSimple(@PathVariable String username, @PathVariable String password){
+        return ResponseEntity.status(HttpStatus.OK).body(loginRegisterService.handleLogin(username, password));
     }
     
     @RequestMapping(value = "register",method = RequestMethod.POST)
-    public ResponseEntity<LoginResponse> createUser(User user){
-    	return ResponseEntity.status(HttpStatus.OK).body(registerService.handleRegister(user));
+    public ResponseEntity<LoginRegisterResponse> createUser(User user){
+    	return ResponseEntity.status(HttpStatus.OK).body(loginRegisterService.handleRegister(user));
     }
 	
 
