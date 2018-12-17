@@ -4,9 +4,10 @@ import java.util.List;
 
 
 import org.adfenp.cinealert.dao.UsersRepo;
-import org.adfenp.cinealert.model.LoginRegisterResponse;
+import org.adfenp.cinealert.model.MessagesResponse;
 import org.adfenp.cinealert.model.User;
 import org.adfenp.cinealert.services.LoginRegisterService;
+import org.adfenp.cinealert.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,9 @@ public class UsersController {
 	@Autowired
     private LoginRegisterService loginRegisterService;
 	
+	@Autowired
+	private UserService userService;
+	
 
 
     @GetMapping(path = "/getUsers")
@@ -41,13 +45,18 @@ public class UsersController {
     
     
     @GetMapping(path="/login/{username}/{password}")
-    public ResponseEntity<LoginRegisterResponse> loginUserSimple(@PathVariable String username, @PathVariable String password){
+    public ResponseEntity<MessagesResponse> loginUserSimple(@PathVariable String username, @PathVariable String password){
         return ResponseEntity.status(HttpStatus.OK).body(loginRegisterService.handleLogin(username, password));
     }
     
     @RequestMapping(value = "register",method = RequestMethod.POST)
-    public ResponseEntity<LoginRegisterResponse> createUser(User user){
+    public ResponseEntity<MessagesResponse> createUser(User user){
     	return ResponseEntity.status(HttpStatus.OK).body(loginRegisterService.handleRegister(user));
+    }
+    
+    @RequestMapping(value = "update/{username}",method = RequestMethod.POST)    
+    public ResponseEntity<MessagesResponse> updateUser(User user){
+    	return ResponseEntity.status(HttpStatus.OK).body(userService.handleUpdateUser(user));
     }
 	
 

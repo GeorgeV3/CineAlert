@@ -1,17 +1,17 @@
 package org.adfenp.cinealert.model;
 
-public class LoginRegisterResponse {
+public class MessagesResponse {
 
     private String status;
     private String message;
     private String role;
 
-    public LoginRegisterResponse(String status, String message) {
+    public MessagesResponse(String status, String message) {
         this.status = status;
         this.message = message;
     }
 
-    public LoginRegisterResponse(String status, String message, String role) {
+    public MessagesResponse(String status, String message, String role) {
         this.status = status;
         this.message = message;
         this.role = role;
