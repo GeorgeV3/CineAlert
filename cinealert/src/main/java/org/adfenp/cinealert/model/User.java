@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.List;
@@ -25,7 +25,8 @@ public class User implements Serializable {
 		    name = "native", 
 		    strategy = "native"
 		)
-	private Long user_ID;
+	@Column(name = "user_id")
+	private Long userId;
 	@Column( nullable=false , length=25)
 	private String email;
 	@Column( nullable=false , length=25)
@@ -66,13 +67,19 @@ public class User implements Serializable {
 		status="ACTIVE";
 	}
 
-	public Long getUser_ID() {
-		return this.user_ID;
+
+
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUser_ID(Long user_ID) {
-		this.user_ID = user_ID;
+
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
+
+
 
 	public String getEmail() {
 		return this.email;
@@ -168,7 +175,7 @@ public class User implements Serializable {
 	public Message addSendMessage(Message sendMsg) {
 		getSendMessages().add(sendMsg);
 		sendMsg.setSender(null);
-		
+	
 		return sendMsg;
 	}
 	
@@ -204,7 +211,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [user_ID=" + user_ID + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
+		return "User [user_ID=" + userId + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", password=" + password + ", role=" + role + ", status=" + status + ", username=" + username
 				+ ", sendMessages=" + sendMessages + ", receiveMessages=" + receiveMessages + "]";
 	}

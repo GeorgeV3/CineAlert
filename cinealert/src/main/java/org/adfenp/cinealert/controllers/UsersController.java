@@ -2,10 +2,12 @@ package org.adfenp.cinealert.controllers;
 
 import java.util.List;
 
+
 import org.adfenp.cinealert.dao.UsersRepo;
 import org.adfenp.cinealert.model.LoginResponse;
 import org.adfenp.cinealert.model.User;
 import org.adfenp.cinealert.services.LoginService;
+import org.adfenp.cinealert.services.RegisterService;
 import org.adfenp.cinealert.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +30,7 @@ public class UsersController {
     private LoginService loginService;
 	
 	@Autowired
-	private UserService userService;
+	private RegisterService registerService;
 	
 
     @GetMapping(path = "/getUsers")
@@ -48,8 +50,8 @@ public class UsersController {
     }
     
     @RequestMapping(value = "register",method = RequestMethod.POST)
-    public User createUser(User user){
-        return userService.save(user);
+    public ResponseEntity<LoginResponse> createUser(User user){
+    	return ResponseEntity.status(HttpStatus.OK).body(registerService.handleRegister(user));
     }
 	
 

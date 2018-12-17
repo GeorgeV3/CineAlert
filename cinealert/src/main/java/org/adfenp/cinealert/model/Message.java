@@ -55,6 +55,19 @@ public class Message implements Serializable {
 	@JoinColumn(name="receiver")
 	@JsonBackReference
 	private User receiver;
+	
+	
+	@Transient
+	private String sendName;
+
+	public String getSendName() {
+		return sendName;
+	}
+
+	public void setSendName(String sendName) {
+		Message message= new Message();	
+		this.sendName = message.sender.getUsername();
+	}
 
 	public Message() {
 		
@@ -135,8 +148,8 @@ public class Message implements Serializable {
 	@Override
 	public String toString() {
 		return "Message [message_ID=" + message_ID + ", date=" + date  + ", msgDeleteStatus="
-				+ msgDeleteStatus + ", status=" + status + ", text=" + text + ", title=" + title + ", sender=" + sender.getUser_ID()
-				+ ", receiver=" + receiver.getUser_ID()+ "]";
+				+ msgDeleteStatus + ", status=" + status + ", text=" + text + ", title=" + title + ", sender=" + sender.getUserId()
+				+ ", receiver=" + receiver.getUserId()+ "]";
 	}
 
 

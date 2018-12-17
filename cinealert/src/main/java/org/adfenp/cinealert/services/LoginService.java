@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
 	@Autowired
-	private UsersRepo userRepository;
+	private UsersRepo usersRepo;
 
 	public LoginResponse handleLogin(String username, String password){
-		User user = userRepository.findUserByusernameAndPassword(username, password);
+		User user = usersRepo.findUserByusernameAndPassword(username, password);
 		if( user == null){
 			LoginResponse loginResponse= new LoginResponse("FAILED", "AUTH FAILED - WHATEVER");
 			return  loginResponse;
