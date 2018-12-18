@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.List;
 
 
@@ -23,44 +25,67 @@ public class Actor implements Serializable {
 		    name = "native", 
 		    strategy = "native"
 		)
-	private Long actor_ID;
+	@Column(name= "actor_id")
+	private Long actorID;
 	
 	@Column( nullable=false , length=25)
-	private String firstname;
+	private String firstName;
 	
 	@Column( nullable=false , length=25)
-	private String lastname;
+	private String lastName;
 
 	//bi-directional many-to-one association to FilmActor
 	@OneToMany(mappedBy="actor")
+	@JsonManagedReference
 	private List<FilmActor> filmActors;
 
 	public Actor() {
 	}
 
-	public Long getActor_ID() {
-		return this.actor_ID;
+
+
+
+	public Long getActorID() {
+		return actorID;
 	}
 
-	public void setActor_ID(Long actor_ID) {
-		this.actor_ID = actor_ID;
+
+
+
+	public void setActorID(Long actorID) {
+		this.actorID = actorID;
 	}
 
-	public String getFirstname() {
-		return this.firstname;
+
+
+
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLastname() {
-		return this.lastname;
+
+
+
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
+
+
+
 
 	public List<FilmActor> getFilmActors() {
 		return this.filmActors;

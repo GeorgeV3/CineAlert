@@ -6,7 +6,6 @@ import org.adfenp.cinealert.dao.MessageRepo;
 import org.adfenp.cinealert.dao.UsersRepo;
 import org.adfenp.cinealert.model.Message;
 import org.adfenp.cinealert.model.MessagesResponse;
-import org.adfenp.cinealert.model.User;
 import org.adfenp.cinealert.services.Init;
 import org.adfenp.cinealert.services.MessageService;
 import org.slf4j.Logger;
@@ -35,14 +34,14 @@ public class MessageController {
 	@Autowired
 	UsersRepo userRepo;
 
-
-	@RequestMapping(value = "/findReceivedMSGs/{receiver}")
+	//Find all received Msgs
+	@RequestMapping(value = "/findReceivedMSGs/{receiver}")//to id tou user pou einai login
 	public List<Message> findByUsernameRole(@PathVariable("receiver")Long receiver){
 		return (List<Message>) messageRepo.findMessageByReceiver(receiver);
 	}
 
-
-	@GetMapping(value = "/findSendMSGs/{sender}")
+	//Find all send Msgs
+	@GetMapping(value = "/findSendMSGs/{sender}") // to username to user pou einai login
 	public ResponseEntity<List<Message>> findSendMSGs(@PathVariable("sender")String sender){
 		//Play with ResponseEntity etc...
 		HttpHeaders headers = new HttpHeaders();
@@ -55,15 +54,24 @@ public class MessageController {
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(checkMsg);
 	}
-
+	
+	//Send msg
 	@RequestMapping(value = "/sendMSG",method = RequestMethod.POST)
 	public ResponseEntity<MessagesResponse> sendMessage(@RequestParam("username") String username,Message message){	
 		return ResponseEntity.status(HttpStatus.OK).body(messageService.handleSendMessage(username , message));
 
 	}
 	
+	//Delete msg, soft deleted/
 	@RequestMapping(value = "/deleteMSG/{messageID}",method = RequestMethod.POST)    
     public ResponseEntity<MessagesResponse> deleteMessage(Message message){
+    	return ResponseEntity.status(HttpStatus.OK).body(messageService.handleDeleteMSG(message));
+    }
+	
+	
+	//Change msg status read/unread
+	@RequestMapping(value = "/changeStatus/{messageID}",method = RequestMethod.POST)    
+    public ResponseEntity<MessagesResponse> changeStatusMsg(Message message){
     	return ResponseEntity.status(HttpStatus.OK).body(messageService.handleDeleteMSG(message));
     }
 	

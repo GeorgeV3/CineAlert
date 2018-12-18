@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.List;
 
 
@@ -23,7 +25,8 @@ public class Film implements Serializable {
 		    name = "native", 
 		    strategy = "native"
 		)
-	private Long film_ID;
+	@Column(name="film_id")
+	private Long filmID;
 	
 	@Lob
 	@Column(nullable=false )
@@ -43,26 +46,35 @@ public class Film implements Serializable {
 
 	//bi-directional many-to-one association to Article
 	@OneToMany(mappedBy="film")
+	@JsonManagedReference
 	private List<Article> articles;
 
 	//bi-directional many-to-one association to FilmActor
 	@OneToMany(mappedBy="film")
+	@JsonManagedReference
 	private List<FilmActor> filmActors;
 
 	//bi-directional many-to-one association to RateFilm
 	@OneToMany(mappedBy="film")
+	@JsonManagedReference
 	private List<RateFilm> rateFilms;
 
 	public Film() {
 	}
 
-	public Long getFilm_ID() {
-		return this.film_ID;
+
+
+	public Long getFilmID() {
+		return filmID;
 	}
 
-	public void setFilm_ID(Long film_ID) {
-		this.film_ID = film_ID;
+
+
+	public void setFilmID(Long filmID) {
+		this.filmID = filmID;
 	}
+
+
 
 	public String getDescription() {
 		return this.description;

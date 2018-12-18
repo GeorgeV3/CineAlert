@@ -12,11 +12,15 @@ import org.springframework.stereotype.Repository;
 public interface MessageRepo extends JpaRepository<Message, Long> {
 
 
-	@Query(value="SELECT * FROM cinealerta.messages  where receiver= ?1" , nativeQuery = true)
+	@Query(value="SELECT * FROM cinealerta.messages  where receiver= ?1 and delete_status='non-deleted' " , nativeQuery = true)
 	List<Message> findMessageByReceiver(Long receiver);
+	@Query(value="SELECT * FROM cinealerta.messages  where sender= ?1 and delete_status='non-deleted' " , nativeQuery = true)
 	List<Message> findMessageBySender(String sender);
 	
 	Message findMessageByMessageID(Long messageID);
+	
+	@Query(value="SELECT * FROM cinealerta.messages  where receiver= ?1 and delete_status='DELETED' " , nativeQuery = true)
+	List<Message> findAllDeleteMSGs(Long receiver2);
 
 
 

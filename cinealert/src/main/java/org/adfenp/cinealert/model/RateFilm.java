@@ -23,32 +23,41 @@ public class RateFilm implements Serializable {
 		    name = "native", 
 		    strategy = "native"
 		)
-	private Long rate_ID;
+	@Column(name="rate_ID" , nullable=false)
+	private Long rateID;
 
 	private int stars;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
-	@JoinColumn(name="usrID")
+	@JoinColumn(name="usrID" , nullable=false)
 	@JsonBackReference
+
 	private User user;
 
 	//bi-directional many-to-one association to Film
 	@ManyToOne
-	@JoinColumn(name="flmID")
+	@JoinColumn(name="flmID" , nullable=false)
 	@JsonBackReference
+
 	private Film film;
 
 	public RateFilm() {
 	}
 
-	public Long getRate_ID() {
-		return this.rate_ID;
+
+
+	public Long getRateID() {
+		return rateID;
 	}
 
-	public void setRate_ID(Long rate_ID) {
-		this.rate_ID = rate_ID;
+
+
+	public void setRateID(Long rateID) {
+		this.rateID = rateID;
 	}
+
+
 
 	public int getStars() {
 		return this.stars;

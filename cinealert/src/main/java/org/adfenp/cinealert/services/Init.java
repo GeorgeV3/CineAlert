@@ -1,9 +1,16 @@
 package org.adfenp.cinealert.services;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+import org.adfenp.cinealert.dao.ActorsRepo;
+import org.adfenp.cinealert.dao.ArticleRepo;
+import org.adfenp.cinealert.dao.FilmRepo;
 import org.adfenp.cinealert.dao.MessageRepo;
 import org.adfenp.cinealert.dao.UsersRepo;
+import org.adfenp.cinealert.model.Actor;
+import org.adfenp.cinealert.model.Article;
+import org.adfenp.cinealert.model.Film;
 import org.adfenp.cinealert.model.Message;
 import org.adfenp.cinealert.model.User;
 import org.slf4j.Logger;
@@ -24,6 +31,19 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 	
 	@Autowired
 	private MessageRepo messageRepo;
+	
+	@Autowired
+	private FilmRepo filmRepo;
+	
+	@Autowired
+	private ActorsRepo actorsRepo;
+	
+	@Autowired
+	private ArticleRepo articleRepo;
+	
+	
+	
+	
 
 	@Override
 	@Transactional
@@ -32,6 +52,9 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		log.info("Deleting current user table...");
 		messageRepo.deleteAll();
 		usersRepo.deleteAll();
+		filmRepo.deleteAll();
+		actorsRepo.deleteAll();
+		articleRepo.deleteAll();
 		log.info("Creating new user..");
 		User users11 = new User();
 		users11.setEmail("ferfr@");
@@ -64,6 +87,7 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		Message message = new Message();
 		message.setDate(new Date());
 		message.setReceiver(users22);
+		message.setMsgDeleteStatus("non-deleted");
 		message.setText("gia stilame ena msg");
 		message.setTitle("Hello word");
 		message.setSender(users11.getUsername());
@@ -78,6 +102,93 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		message2.setStatus("read");
 		message2.setSender(users11.getUsername());
 		messageRepo.save(message2);
+	//////////////////////////////////////////////////////
+		///////////////////////////////////////////
+		/////////////////////////////////////////////
+		ArrayList<Actor> actorss= new ArrayList<>();
+		ArrayList<Film> films= new ArrayList<>();
+	
+		Actor actor = new Actor();
+		actor.setLastName("Karasavaw33");
+		actor.setFirstName("George33");
+		
+			
+		Actor actor2= new Actor();
+		actor2.setLastName("Karasavaw");
+		actor2.setFirstName("George");
+		
+		
+		actorss.add(actor);
+		actorss.add(actor2);
+		
+		
+		
+		Film film= new Film();
+		
+		Article article=new Article();
+		article.setFilm(film);
+		article.setText("i kaliteri tenia olown ton epoxwn");
+		article.setUser(users33);
+		articleRepo.save(article);
+		
+		Article article2=new Article();
+		article2.setFilm(film);
+		article2.setText("i kaliteri tenia olown ton epoxwn3332e222222222222222222eeeeeeeeeeeeeeeeeeeeeeeeeeeee2e@@@@");
+		article2.setUser(users33);
+		articleRepo.save(article2);
+		
+		
+		
+		
+		film.setTitle("I aiwnia liakada");
+		film.setDescription("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		film.setLength(120);
+		film.setReleaseYr(2002-02-11);
+		film.setGenre("Thriller-Romance-Sex&Drungs");
+		
+		
+		films.add(film);
+		
+		filmRepo.save(film);
+		
+		actorsRepo.saveAll(actorss);
+		Film film2= new Film();
+		film2.setTitle("I aiwnia liakada");
+		film2.setDescription("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		film2.setLength(120);
+		film2.setReleaseYr(2002-02-11);
+		film2.setGenre("Thriller-Romance-Sex&Drungs");
+		filmRepo.save(film2);
+		
+		Film film3= new Film();
+		film3.setTitle("I aiwnia liakada");
+		film3.setDescription("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		film3.setLength(120);
+		film3.setReleaseYr(2002-02-11);
+		film3.setGenre("Thriller-Romance-Sex&Drungs");
+		
+		filmRepo.save(film3);
+		
+		Film film4= new Film();
+		film4.setTitle("I aiwnia liakada");
+		film4.setDescription("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		film4.setLength(120);
+		film4.setReleaseYr(2002-02-11);
+		film4.setGenre("Thriller-Romance-Sex&Drungs");
+		filmRepo.save(film4);
+		
+		Film film5= new Film();
+		film5.setTitle("I aiwnia liakada");
+		film5.setDescription("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		film5.setLength(120);
+		film5.setReleaseYr(2002-02-11);
+		film5.setGenre("Thriller-Romance-Sex&Drungs");
+		filmRepo.save(film5);
+		
+		
+		
+		
+				
 		
 		
 		

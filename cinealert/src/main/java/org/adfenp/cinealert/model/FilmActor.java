@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 
 @Entity
@@ -21,28 +23,37 @@ public class FilmActor implements Serializable {
 		    name = "native", 
 		    strategy = "native"
 		)
-	private Long film_actor_ID;
+	@Column(name="film_actor_ID")
+	private Long filmActorID;
 
 	//bi-directional many-to-one association to Film
 	@ManyToOne
 	@JoinColumn(name="flmID")
+	@JsonBackReference
 	private Film film;
 
 	//bi-directional many-to-one association to Actor
 	@ManyToOne
 	@JoinColumn(name="actorID")
+	@JsonBackReference
 	private Actor actor;
 
 	public FilmActor() {
 	}
 
-	public Long getFilm_actor_ID() {
-		return this.film_actor_ID;
+
+
+	public Long getFilmActorID() {
+		return filmActorID;
 	}
 
-	public void setFilm_actor_ID(Long film_actor_ID) {
-		this.film_actor_ID = film_actor_ID;
+
+
+	public void setFilmActorID(Long filmActorID) {
+		this.filmActorID = filmActorID;
 	}
+
+
 
 	public Film getFilm() {
 		return this.film;

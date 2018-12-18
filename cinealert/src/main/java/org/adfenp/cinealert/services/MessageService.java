@@ -30,13 +30,14 @@ public class MessageService {
 		//No time to find the best solution.We let the front handle it for the moment
 		if(user!=null) {
 		newMessage.setDate(new Date());
-		newMessage.setStatus("unread");
+		newMessage.setStatus("UNREAD");
 		newMessage.setReceiver(user);
+		newMessage.setMsgDeleteStatus("non-deleted");
 		newMessage.setSender(message.getSender());
 		newMessage.setTitle(message.getText());
 		newMessage.setText(message.getText());
 		messageRepo.save(newMessage);
-		MessagesResponse registerResponce= new MessagesResponse("SUCCESS", "User registration complete."
+		MessagesResponse registerResponce= new MessagesResponse("SUCCESS", "Message send."
 				,String.valueOf(newMessage.getMessageID()));
 		return  registerResponce;
 		}
@@ -52,6 +53,18 @@ public class MessageService {
 		 return deleteResponce;
 		}
 		return new MessagesResponse("FAIL", "Message do not delete something went wrong");
+	}
+	
+	
+	public MessagesResponse handleChangeStatusMSG(Message message) {
+		Message messageCheck=messageRepo.findMessageByMessageID(message.getMessageID());
+		if (messageCheck!=null) {
+			messageCheck.setMsgDeleteStatus("READ");
+			messageRepo.save(messageCheck);
+			MessagesResponse deleteResponce= new MessagesResponse("SUCCESS", "Message change to Read",String.valueOf(messageCheck.getStatus()));
+		 return deleteResponce;
+		}
+		return new MessagesResponse("FAIL", "Message do not change status, something went wrong");
 	}
 
 
