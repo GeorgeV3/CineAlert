@@ -38,9 +38,14 @@ public class UsersController {
         return ResponseEntity.status(HttpStatus.OK).body(usersRepo.findAll());
     }
     
-    @RequestMapping(value = "findUserMsgs/{username}")
+    @RequestMapping(value = "/findUserMsgs/{username}")
     public User findByUsername(@PathVariable("username")String username){
         return (User) usersRepo.findUsersByUsername(username);
+    }
+    
+    @RequestMapping(value = "/findUserByRole/{role}")
+    public List<User> findByUsernameRole(@PathVariable("role")String role){
+        return (List<User>) usersRepo.findUserByRole(role);
     }
     
     
@@ -49,17 +54,17 @@ public class UsersController {
         return ResponseEntity.status(HttpStatus.OK).body(loginRegisterService.handleLogin(username, password));
     }
     
-    @RequestMapping(value = "register",method = RequestMethod.POST)
-    public ResponseEntity<MessagesResponse> createUser(User user){
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    public ResponseEntity<MessagesResponse> registerUser(User user){
     	return ResponseEntity.status(HttpStatus.OK).body(loginRegisterService.handleRegister(user));
     }
     
-    @RequestMapping(value = "update/{username}",method = RequestMethod.POST)    
+    @RequestMapping(value = "/update/{username}",method = RequestMethod.POST)    
     public ResponseEntity<MessagesResponse> updateUser(User user){
     	return ResponseEntity.status(HttpStatus.OK).body(userService.handleUpdateUser(user));
     }
     
-    @RequestMapping(value = "delete/{username}",method = RequestMethod.POST)    
+    @RequestMapping(value = "/deleteUSER/{username}",method = RequestMethod.POST)    
     public ResponseEntity<MessagesResponse> deleteUser(User user){
     	return ResponseEntity.status(HttpStatus.OK).body(userService.handleDeleteUser(user));
     }

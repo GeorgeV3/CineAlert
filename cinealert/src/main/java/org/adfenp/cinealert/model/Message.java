@@ -18,23 +18,24 @@ public class Message implements Serializable {
 
 	@Id
 	@GeneratedValue(
-		    strategy= GenerationType.AUTO, 
-		    generator="native"
-		)
-		@GenericGenerator(
-		    name = "native", 
-		    strategy = "native"
-		)
-	private Long message_ID;
+			strategy= GenerationType.AUTO, 
+			generator="native"
+			)
+	@GenericGenerator(
+			name = "native", 
+			strategy = "native"
+			)
+	@Column(name="message_id")
+	private Long messageID;
 
-	
+
 	@Column(name="date" , nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 
 	@Column(name="delete_status")
 	private String msgDeleteStatus;
-	
+
 	@Column(  length=25)
 	private String status;
 
@@ -45,43 +46,36 @@ public class Message implements Serializable {
 	private String title;
 
 	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="sender")
-	@JsonBackReference
-	private User sender;
-	
-	
+//	@ManyToOne
+//	@JoinColumn(name="sender")
+//	@JsonBackReference
+	@Column( nullable=false , length=50)
+	private String sender;
+
+
 	@ManyToOne
 	@JoinColumn(name="receiver")
 	@JsonBackReference
 	private User receiver;
-	
-	
-	@Transient
-	private String sendName;
 
-	public String getSendName() {
-		return sendName;
+
+	
+
+	public String getSender() {
+		return sender;
 	}
 
-	public void setSendName(String sendName) {
-		Message message= new Message();	
-		this.sendName = message.sender.getUsername();
+	public void setSender(String sender) {
+		this.sender = sender;
 	}
 
 	public Message() {
-		
+
 		date=new Date();
 		status="unread";
 	}
 
-	public Long getMessage_ID() {
-		return this.message_ID;
-	}
 
-	public void setMessage_ID(Long message_ID) {
-		this.message_ID = message_ID;
-	}
 
 
 
@@ -93,9 +87,17 @@ public class Message implements Serializable {
 		this.date = date;
 	}
 
-	
 
 
+
+
+	public Long getMessageID() {
+		return messageID;
+	}
+
+	public void setMessageID(Long messageID) {
+		this.messageID = messageID;
+	}
 
 	public String getMsgDeleteStatus() {
 		return msgDeleteStatus;
@@ -129,13 +131,7 @@ public class Message implements Serializable {
 		this.title = title;
 	}
 
-	public User getSender() {
-		return sender;
-	}
 
-	public void setSender(User sender) {
-		this.sender = sender;
-	}
 
 	public User getReceiver() {
 		return receiver;
@@ -147,8 +143,8 @@ public class Message implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Message [message_ID=" + message_ID + ", date=" + date  + ", msgDeleteStatus="
-				+ msgDeleteStatus + ", status=" + status + ", text=" + text + ", title=" + title + ", sender=" + sender.getUserId()
+		return "Message [message_ID=" + messageID + ", date=" + date  + ", msgDeleteStatus="
+				+ msgDeleteStatus + ", status=" + status + ", text=" + text + ", title=" + title + ", sender=" + sender
 				+ ", receiver=" + receiver.getUserId()+ "]";
 	}
 

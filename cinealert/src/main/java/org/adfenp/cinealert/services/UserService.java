@@ -26,8 +26,8 @@ public class UserService {
 		password=user.getPassword();
 		email=user.getEmail();
 		if( userCheck == null){	
-			MessagesResponse loginResponse= new MessagesResponse("FAILED", "NO USER EXIST TO UPDATE");
-			return  loginResponse;
+			MessagesResponse updateResponse= new MessagesResponse("FAILED", "NO USER EXIST TO UPDATE");
+			return  updateResponse;
 		}
 		if(email == null || email.trim().length()==0) {
 		}
@@ -47,9 +47,9 @@ public class UserService {
 		else {
 			userCheck.setRole(user.getRole());
 		}
-
+		//thelei ftiaksimo to return 
 		usersRepo.save(userCheck);
-		return new MessagesResponse("SUCCESS", "UPDATE COMPLETE");
+		return new MessagesResponse("SUCCESS", "UPDATE COMPLETE",String.valueOf(userCheck.getRole()));
 	}
 
 	public MessagesResponse handleDeleteUser(User user) {
@@ -57,9 +57,10 @@ public class UserService {
 		if( userCheck != null){	
 			userCheck.setStatus("DELETED");
 			usersRepo.save(userCheck);
-			return new MessagesResponse("SUCCESS", "DELETE COMPLETE",String.valueOf(userCheck.getStatus()));
+			MessagesResponse deleteResponse = new MessagesResponse("SUCCESS", "DELETE COMPLETE",String.valueOf(userCheck.getStatus()));
+			return deleteResponse;
 		}
-		return new MessagesResponse("FAIL", "DELETE USER");
+		return new MessagesResponse("FAIL", "NO USER EXIST IN DATABASE FOR DELETE",String.valueOf(user.getRole()));
 
 	}
 }

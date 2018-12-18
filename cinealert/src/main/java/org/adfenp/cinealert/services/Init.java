@@ -66,7 +66,7 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		message.setReceiver(users22);
 		message.setText("gia stilame ena msg");
 		message.setTitle("Hello word");
-		message.setSender(users11);
+		message.setSender(users11.getUsername());
 		messageRepo.save(message);
 		
 		Message message2 = new Message();
@@ -76,7 +76,7 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		message2.setTitle("Hello word");
 		message2.setMsgDeleteStatus("deleted");
 		message2.setStatus("read");
-		message2.setSender(users11);
+		message2.setSender(users11.getUsername());
 		messageRepo.save(message2);
 		
 		

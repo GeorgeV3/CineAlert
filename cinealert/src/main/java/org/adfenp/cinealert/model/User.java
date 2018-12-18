@@ -48,9 +48,9 @@ public class User implements Serializable {
 	private List<Article> articles;
 
 	//bi-directional many-to-one association to Message
-	@OneToMany(mappedBy="sender")
-	@JsonManagedReference
-	private List<Message> sendMessages;
+//	@OneToMany(mappedBy="sender")
+//	@JsonManagedReference
+//	private List<Message> sendMessages;
 	
 	//bi-directional many-to-one association to Message
 		@OneToMany(mappedBy="receiver")
@@ -163,28 +163,28 @@ public class User implements Serializable {
 		return article;
 	}
 	
-	public List<Message> getSendMessages() {
-		return sendMessages;
-	}
-
-	public void setSendMessages(List<Message> sendMessages) {
-		this.sendMessages = sendMessages;
-	}
-	
-	
-	public Message addSendMessage(Message sendMsg) {
-		getSendMessages().add(sendMsg);
-		sendMsg.setSender(null);
-	
-		return sendMsg;
-	}
-	
-	public Message removeSendMessage(Message sendMsg) {
-		getSendMessages().remove(sendMsg);
-		sendMsg.setSender(null);
-		
-		return sendMsg;
-	}
+//	public List<Message> getSendMessages() {
+//		return sendMessages;
+//	}
+//
+//	public void setSendMessages(List<Message> sendMessages) {
+//		this.sendMessages = sendMessages;
+//	}
+//	
+//	
+//	public Message addSendMessage(Message sendMsg) {
+//		getSendMessages().add(sendMsg);
+//		sendMsg.setSender(null);
+//	
+//		return sendMsg;
+//	}
+//	
+//	public Message removeSendMessage(Message sendMsg) {
+//		getSendMessages().remove(sendMsg);
+//		sendMsg.setSender(null);
+//		
+//		return sendMsg;
+//	}
 
 	public List<Message> getReceiveMessages() {
 		return receiveMessages;
@@ -213,7 +213,7 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [user_ID=" + userId + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", password=" + password + ", role=" + role + ", status=" + status + ", username=" + username
-				+ ", sendMessages=" + sendMessages + ", receiveMessages=" + receiveMessages + "]";
+				+  ", receiveMessages=" + receiveMessages + "]";
 	}
 
 

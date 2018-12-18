@@ -22,13 +22,14 @@ public class LoginRegisterService {
 		return new MessagesResponse("SUCCESS", "LOGIN IN", String.valueOf(user.getRole()));
 	}
 	
+	
 	public MessagesResponse handleRegister(User user) {
 		User userCheck = usersRepo.findUsersByUsername(user.getUsername());
 		if( userCheck == null){	
 			usersRepo.save(user);
-			MessagesResponse loginResponse= new MessagesResponse("SUCCESS", "User registration complete."
+			MessagesResponse registerResponce= new MessagesResponse("SUCCESS", "User registration complete."
 					,String.valueOf(user.getRole()));
-			return  loginResponse;
+			return  registerResponce;
 		}
 		return new MessagesResponse("FAIL", "DUPLICATE USERNAME"
 				,"Username : " + String.valueOf(userCheck.getUsername())+" exist.Plz provide new username");

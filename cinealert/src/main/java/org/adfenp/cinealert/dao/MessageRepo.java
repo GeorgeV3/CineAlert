@@ -1,15 +1,24 @@
 package org.adfenp.cinealert.dao;
 
-import org.adfenp.cinealert.model.Message;
+import java.util.List;
 
+import org.adfenp.cinealert.model.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
 public interface MessageRepo extends JpaRepository<Message, Long> {
-	Message findAllMessageBysender(long user_ID);
+
+
+	@Query(value="SELECT * FROM cinealerta.messages  where receiver= ?1" , nativeQuery = true)
+	List<Message> findMessageByReceiver(Long receiver);
+	List<Message> findMessageBySender(String sender);
 	
+	Message findMessageByMessageID(Long messageID);
+
+
 
 
 }
