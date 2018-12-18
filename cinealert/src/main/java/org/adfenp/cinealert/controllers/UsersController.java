@@ -13,8 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -49,8 +51,8 @@ public class UsersController {
     }
     
     
-    @GetMapping(path="/login/{username}/{password}")
-    public ResponseEntity<MessagesResponse> loginUserSimple(@PathVariable String username, @PathVariable String password){
+    @RequestMapping(path="/login",method=RequestMethod.POST)//requestparam gia form data.
+    public ResponseEntity<MessagesResponse> loginUserSimple(@RequestParam("username") String username, @RequestParam("password") String password){
         return ResponseEntity.status(HttpStatus.OK).body(loginRegisterService.handleLogin(username, password));
     }
     

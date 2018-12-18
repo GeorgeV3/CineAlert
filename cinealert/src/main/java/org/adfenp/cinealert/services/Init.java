@@ -5,12 +5,14 @@ import java.util.Date;
 
 import org.adfenp.cinealert.dao.ActorsRepo;
 import org.adfenp.cinealert.dao.ArticleRepo;
+import org.adfenp.cinealert.dao.FilmActorRepo;
 import org.adfenp.cinealert.dao.FilmRepo;
 import org.adfenp.cinealert.dao.MessageRepo;
 import org.adfenp.cinealert.dao.UsersRepo;
 import org.adfenp.cinealert.model.Actor;
 import org.adfenp.cinealert.model.Article;
 import org.adfenp.cinealert.model.Film;
+import org.adfenp.cinealert.model.FilmActor;
 import org.adfenp.cinealert.model.Message;
 import org.adfenp.cinealert.model.User;
 import org.slf4j.Logger;
@@ -41,6 +43,9 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 	@Autowired
 	private ArticleRepo articleRepo;
 	
+	@Autowired
+	private FilmActorRepo filmActorREpo;
+	
 	
 	
 	
@@ -55,6 +60,7 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		filmRepo.deleteAll();
 		actorsRepo.deleteAll();
 		articleRepo.deleteAll();
+		filmActorREpo.deleteAll();
 		log.info("Creating new user..");
 		User users11 = new User();
 		users11.setEmail("ferfr@");
@@ -187,7 +193,16 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		
 		
 		
+		FilmActor filmActor= new FilmActor();
+		filmActor.setActor(actor2);
+		filmActor.setFilm(film5);
 		
+		FilmActor filmActor2= new FilmActor();
+		filmActor2.setActor(actor2);
+		filmActor2.setFilm(film3);
+		
+		filmActorREpo.save(filmActor);
+		filmActorREpo.save(filmActor2);
 				
 		
 		

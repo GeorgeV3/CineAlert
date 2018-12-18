@@ -33,10 +33,17 @@ public class MessageController {
 
 	@Autowired
 	UsersRepo userRepo;
+	
+	//Find all received Msgs
+		@GetMapping(value = "/findAllMsg")
+		public List<Message> findAllMSGs(){
+			return (List<Message>) messageRepo.findAll();
+		}
+	
 
 	//Find all received Msgs
 	@RequestMapping(value = "/findReceivedMSGs/{receiver}")//to id tou user pou einai login
-	public List<Message> findByUsernameRole(@PathVariable("receiver")Long receiver){
+	public List<Message> findReceiveMSGs(@PathVariable("receiver")Long receiver){
 		return (List<Message>) messageRepo.findMessageByReceiver(receiver);
 	}
 
@@ -57,14 +64,14 @@ public class MessageController {
 	
 	//Send msg
 	@RequestMapping(value = "/sendMSG",method = RequestMethod.POST)
-	public ResponseEntity<MessagesResponse> sendMessage(@RequestParam("username") String username,Message message){	
+	public ResponseEntity<MessagesResponse> sendMSG(@RequestParam("username") String username,Message message){	
 		return ResponseEntity.status(HttpStatus.OK).body(messageService.handleSendMessage(username , message));
 
 	}
 	
 	//Delete msg, soft deleted/
 	@RequestMapping(value = "/deleteMSG/{messageID}",method = RequestMethod.POST)    
-    public ResponseEntity<MessagesResponse> deleteMessage(Message message){
+    public ResponseEntity<MessagesResponse> deleteMSG(Message message){
     	return ResponseEntity.status(HttpStatus.OK).body(messageService.handleDeleteMSG(message));
     }
 	
