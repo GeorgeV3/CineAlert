@@ -140,7 +140,6 @@ tr:nth-child(even) {
         </footer>
     </div>
 
-
 	<script type="text/javascript">
 		$(function() {
 			$("#Outbox").hide();
@@ -148,8 +147,6 @@ tr:nth-child(even) {
 
 		});
 	</script>
-
-
 
 	<script type="text/javascript" src="assets/js/myjs.js"></script>
 
@@ -163,7 +160,7 @@ tr:nth-child(even) {
 		$('#test tr').remove();
 		$.ajax({
 			type: 'GET',
-			url: '/findReceivedMSGs/1',
+			url: '/findReceivedMSGs/skadi3',
 			success: function (humans){
  				$("#test").append('<tr ><th>Title</th><th>Description</th><th>Sender</th><th>Date</th></tr>')
 			 	$.each(humans, function (i, human){

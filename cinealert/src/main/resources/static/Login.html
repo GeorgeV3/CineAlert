@@ -62,7 +62,7 @@
 	</nav>
 	
     <div class="login-clean">
-        <form method="POST" name="registration" id="form" >
+        <form method="post" name="login" id="form" action="login" >
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><width="200px" class="center"></div>
             <div class="form-group"><input class="form-control"  name="username" id="username" placeholder="Username"></div>
@@ -95,26 +95,22 @@
     <script type="text/javascript">
     
     
-    
-   	$(function() {
-		  $('#form').on('submit', function(e) {
-		    e.preventDefault();
-		    var item = {"username": 'skadi3' , "password": '123456'};
-		    $.ajax({
-		      url: '/login',
-		      type: 'POST',
-		      contentType: 'application/json',
-		      data: item,
-		      dataType: "json",
-		      success: function() {
-		        console.log('hello');
-		      },
-		      error: function() {
-		        console.log('error');
-		      }
-		    });
-		  });
-		});  
+    $('#form').on('submit',function() {
+    	$.ajax({
+    	    url: '/login',
+    	    dataType: 'json',
+    	    method: 'POST',
+    	    contentType: 'application/json',
+    	    data: JSON.stringify( { "username": $('#username').val(), "password": $('#password').val() } ),
+    	    processData: false,
+    	    success: function( data ){
+    	        $('#response pre').html( JSON.stringify( data ) );
+    	    },
+    	    error: function( jqXhr, textStatus, errorThrown ){
+   	        console.log( errorThrown );
+    	    }
+    	});
+	});  
     </script>
     
 </body>

@@ -33,14 +33,9 @@ public class LoginRegisterService {
 		return new MessagesResponse("FAILED", "WRONG PASSWORD", String.valueOf(user.getRole()));
 	}
 	
-	//(String username , String firstName , String lastName , String password , String email)
-	public MessagesResponse handleRegister(String username , String firstName , String lastName , String password , String email) {
-		User user = new User();
-		user.setUsername(username);
-		user.setEmail(email);
-		user.setFirstName(firstName);
-		user.setLastName(lastName);
-		user.setPassword(password);
+
+	public MessagesResponse handleRegister(User user) {
+
 		User userCheck = usersRepo.findUsersByUsername(user.getUsername());
 		if( userCheck == null){	
 			usersRepo.save(user);

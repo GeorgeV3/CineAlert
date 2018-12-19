@@ -42,9 +42,9 @@ public class MessageController {
 	
 
 	//Find all received Msgs
-	@RequestMapping(value = "/findReceivedMSGs/{receiver}")//to id tou user pou einai login
-	public List<Message> findReceiveMSGs(@PathVariable("receiver")Long receiver){
-		return (List<Message>) messageRepo.findMessageByReceiver(receiver);
+	@RequestMapping(value = "/findReceivedMSGs/{username}")//to id tou user pou einai login
+	public List<Message> findReceiveMSGs(@PathVariable("username")String username){
+		return (List<Message>) messageRepo.findMessageByUsername(username);
 	}
 
 	//Find all send Msgs

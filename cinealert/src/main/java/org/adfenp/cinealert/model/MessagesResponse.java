@@ -5,6 +5,7 @@ public class MessagesResponse {
     private String status;
     private String message;
     private String role;
+    private String username;
 
     public MessagesResponse(String status, String message) {
         this.status = status;
@@ -17,7 +18,24 @@ public class MessagesResponse {
         this.role = role;
     }
 
-    public String getStatus() {
+    
+    public MessagesResponse(String status, String message, String role, String username) {
+		super();
+		this.status = status;
+		this.message = message;
+		this.role = role;
+		this.username = username;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getStatus() {
         return status;
     }
 

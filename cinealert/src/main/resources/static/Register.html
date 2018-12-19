@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registation</title>
+<title>Registration</title>
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
 <link rel="stylesheet"
@@ -67,7 +67,7 @@
 
 	<div class="register-photo">
 		<div class="form-container col-xs-12" style="width: 600px;">
-			<form method="get" name="registration">
+			<form method="post" name="registration" action="/register">
 				<h2 class="text-center">
 					<strong>Create</strong> an account.
 				</h2>
@@ -79,7 +79,7 @@
 					class="form-control" type="email" name="email" id="email"
 					placeholder="Email"> <input class="form-control"
 					type="password" id="password" name="password"
-					placeholder="Password">
+					placeholder="Password"> 
 
 				<div class="form-group">
 					<div class="form-check">
@@ -116,21 +116,6 @@
 		</footer>
 	</div>
 
-	<form action="/foo" method="post" id="form">
-		<!-- form elements here... -->
-		
-		<input class="form-control" type="text" name="username"
-					id="username" placeholder="Username"> <input
-					class="form-control" type="text" name="firstName" id="firstName"
-					placeholder="Name"> <input class="form-control" type="text"
-					name="lastName" id="lastName" placeholder="Surname"> <input
-					class="form-control" type="email" name="email" id="email"
-					placeholder="Email"> <input class="form-control"
-					type="password" id="password" name="password"
-					placeholder="Password">
-		<button type="submit" class="site-font-light mobile-handler">Submit</button> 
-	</form>
-
 
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -141,35 +126,47 @@
 
 	<script type="text/javascript">
     
-  //  $("#b2").click(function() {
-    //	$.ajax({
-    //	    url: '/register',
-    //	    dataType: 'json',
-    //	    type: 'GET',
-    //	    contentType: 'application/json',
-    //	    data: JSON.stringify( { "username": $('#username').val(), "password": $('#password').val()
-    //	    	, "firstName": $('#firstName') , "lastName" : $('lastName') ,"email": $('#email').val() } ),
-    //	    processData: false,
-    //	    success: function( data ){
-    ///	        $('#response pre').html( JSON.stringify( data ) );
-    //	    },
-    //	    error: function( jqXhr, textStatus, errorThrown ){
-    //	        console.log( errorThrown );
-    //	    }
-    //	});
-	//});  
+	$('#form').on('submit',function() {
+    	$.ajax({
+    	    url: '/register',
+    	    dataType: 'json',
+    	    method: 'POST',
+    	    contentType: 'application/json',
+    	    data: JSON.stringify( { "username": $('#username').val(), "password": $('#password').val()
+    	    	, "firstName": $('#firstName').val , "lastName" : $('lastName').val ,"email": $('#email').val() } ),
+    	    processData: false,
+    	    success: function( data ){
+    	        $('#response pre').html( JSON.stringify( data ) );
+    	    },
+    	    error: function( jqXhr, textStatus, errorThrown ){
+   	        console.log( errorThrown );
+    	    }
+    	});
+	});  
+  
+  // {"username": $('#username').val(), "password": $('#password').val(), "firstName": $('#firstName').val() , "lastName" : $('#lastName').val() ,"email": $('#email').val() }
     
-   
-    	$(function() {
+   /* 
+    	 $(function() {
     		  $('#form').on('submit', function(e) {
     		    e.preventDefault();
-    		    var item = {"username": $('#username').val(), "password": $('#password').val(), "firstName": $('#firstName').val() , "lastName" : $('#lastName').val() ,"email": $('#email').val() }
+    		    var token = $('#csrfToken').val();
+    		    var header = $('#csrfHeader').val(); 
+    		    var url = ''
+    		    var item = {"username": 'varethika', "password": '123456', "firstName": 'dedwdwedewd' , "lastName" : 'wedweded' ,"email": 'dwedwedewdwed'}
     		    $.ajax({
     		      url: '/register',
-    		      type: 'GET',
+    		      method : 'POST',
     		      contentType: 'application/json',
-    		      data: item,
+    		      data: {"username": 'varethika', "password": '123456', "firstName": 'dedwdwedewd' , "lastName" : 'wedweded' ,"email": 'dwedwedewdwed'},
     		      dataType: "json",
+    		      
+    		        async : true,
+    		      beforeSend: function(xhr) {
+    		          xhr.setRequestHeader("Accept", "application/json");
+    		          xhr.setRequestHeader("Content-Type", "application/json");
+    		          xhr.setRequestHeader(header, token);
+    		      },  
     		      success: function() {
     		        console.log('hello');
     		      },
@@ -178,7 +175,7 @@
     		      }
     		    });
     		  });
-    		});
+    		});  */
     </script>
 
 </body>

@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 public interface MessageRepo extends JpaRepository<Message, Long> {
 
 
-	@Query(value="SELECT * FROM cinealerta.messages  where receiver= ?1 and delete_status='non-deleted' " , nativeQuery = true)
-	List<Message> findMessageByReceiver(Long receiver);
+	@Query(value="SELECT * FROM cinealerta.messages  where receiver=(select user_id from users where username = ?1 )  and delete_status='non-deleted' " , nativeQuery = true)
+	List<Message> findMessageByUsername(String username);
 	@Query(value="SELECT * FROM cinealerta.messages  where sender= ?1 and delete_status='non-deleted' " , nativeQuery = true)
 	List<Message> findMessageBySender(String sender);
 	
