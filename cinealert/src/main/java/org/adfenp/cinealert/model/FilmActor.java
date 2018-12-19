@@ -29,13 +29,13 @@ public class FilmActor implements Serializable {
 	//bi-directional many-to-one association to Film
 	@ManyToOne
 	@JoinColumn(name="flmID")
-	@JsonBackReference
+	@JsonBackReference(value="film")
 	private Film film;
 
 	//bi-directional many-to-one association to Actor
 	@ManyToOne
 	@JoinColumn(name="actorID")
-	@JsonBackReference
+	@JsonBackReference(value="actor")
 	private Actor actor;
 
 	public FilmActor() {

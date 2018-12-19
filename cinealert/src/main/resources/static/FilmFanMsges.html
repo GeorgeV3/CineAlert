@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FFNmsg</title>
+
+<link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+<link rel="stylesheet" href="assets/css/Footer-Basic.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script type="text/javascript" src="assets/js/myjs.js"></script>
+
+<style type="text/css">
+table {
+	
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+</head>
+
+<body>
+	<nav
+		class="navbar navbar-light navbar-expand-md navigation-clean-search"
+		style="background-color: #82c6f8;">
+		<div class="container">
+			<a class="navbar-brand" href="Home.html">CineAlert</a>
+			<button class="navbar-toggler" data-toggle="collapse"
+				data-target="#navcol-1">
+				<span class="sr-only">Toggle navigation</span><span
+					class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navcol-1">
+				<ul class="nav navbar-nav">
+					<li class="nav-item" role="presentation"><a
+						class="nav-link active" href="AboutUs.html">About us</a></li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						href="#">Contact us</a></li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						href="#">Donate</a></li>
+				</ul>
+				<form class="form-inline mr-auto" target="_self">
+					<div class="form-group">
+						<label for="search-field"><i class="fa fa-search"
+							style="color: rgb(116, 60, 60);"></i></label><input
+							class="form-control search-field" type="search" name="search"
+							id="search-field" style="background-color: #bfb8b8;">
+					</div>
+				</form>
+				
+			
+			</div>
+			
+		</div>
+		
+				<div id="koubaki" style="margin-right:1%">
+<button id="mapbutton" type="button"  onclick=" window.open('https://www.google.com/maps/place/Coffee+Island/@37.980772,23.7300943,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a39f7f275:0x59f0c81708e88bf!8m2!3d37.980772!4d23.732283','_blank')">View Map</button>
+</div>
+		  <a style="margin-right:1%" class="btn btn-light action-button" role="button"
+					href="Register.html">Sign<br>up
+				</a>
+				<a class="btn btn-light action-button" role="button"
+					href="Login.html">Log<br>in
+					</a>
+	</nav>
+	
+
+	<br>
+	<br>
+	<br>
+
+	<div class="tab">
+		<button class="tablinks" id="b1" onclick="openCity(event, 'Inbox')">Inbox</button>
+		<button class="tablinks" id="b2" onclick="openCity(event, 'Outbox')">Outbox</button>
+		<button class="tablinks" id="b3" onclick="openCity(event, 'Deleted')">Deleted</button>
+	</div>
+
+	<div id="Inbox" class="tabcontent">
+		
+		
+
+		<table id="test"></table>
+
+	</div>
+
+	<div id="Outbox" class="tabcontent">
+		
+		<table id="test2"></table>
+		
+	</div>
+
+	<div id="Deleted" class="tabcontent">
+		
+		
+		
+	</div>
+	
+  <div class="footer-basic">
+        <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">About us</a></li>
+                <li class="list-inline-item"><a href="#">Donate</a></li>
+              
+            </ul>
+            <p class="copyright">CineAlert© 2019</p>
+        </footer>
+    </div>
+
+
+	<script type="text/javascript">
+		$(function() {
+			$("#Outbox").hide();
+			$("#Deleted").hide();
+
+		});
+	</script>
+
+
+
+	<script type="text/javascript" src="assets/js/myjs.js"></script>
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+	
+	$("#b1").click(function() {
+		// alert("The paragraph was clicked.");  OK up to here
+		$('#test tr').remove();
+		$.ajax({
+			type: 'GET',
+			url: '/findReceivedMSGs/1',
+			success: function (humans){
+ 				$("#test").append('<tr ><th>Title</th><th>Description</th><th>Sender</th><th>Date</th></tr>')
+			 	$.each(humans, function (i, human){
+					$("#test").append($("#test").append('<tr class = "hhh"><td>'+human.title+'</td><td>'+human.text+'</td><td>'+human.sender+'</td><td>'+human.date+'</td></tr>'));
+					
+				}); 
+			}
+		});
+	});  
+	
+	$("#b2").click(function() {
+		// alert("The paragraph was clicked.");  OK up to here
+		$('#test2 tr').remove();
+		$.ajax({
+			type: 'GET',
+			url: '/findSendMSGs/skadi3',
+			success: function (humans){
+ 				$("#test2").append('<tr ><th>Title</th><th>Description</th><th>Receiver</th><th>Date</th></tr>')
+			 	$.each(humans, function (i, human){
+					$("#test2").append($("#test2").append('<tr class = "hhh"><td>'+human.title+'</td><td>'+human.text+'</td><td>'+human.sender+'</td><td>'+human.date+'</td></tr>'));
+					
+				}); 
+			}
+		});
+	});  
+	
+	</script>
+</body>
+
+</html>

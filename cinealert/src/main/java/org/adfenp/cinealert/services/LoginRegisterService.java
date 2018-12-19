@@ -26,25 +26,29 @@ public class LoginRegisterService {
 			MessagesResponse loginResponse= new MessagesResponse("FAILED", "WRONG USERNAME");
 			return  loginResponse;
 		}
-		if( passwordEncoder.matches(password, passwordDB= user.getPassword())) {
+		if( passwordEncoder.matches(password, passwordDB = user.getPassword())) {
 			return new MessagesResponse("SUCCESS", "LOGIN IN", String.valueOf(user.getRole()));
 		}
 			
 		return new MessagesResponse("FAILED", "WRONG PASSWORD", String.valueOf(user.getRole()));
 	}
 	
-	
-	public MessagesResponse handleRegister(User user) {
+	//(String username , String firstName , String lastName , String password , String email)
+	public MessagesResponse handleRegister(String username , String firstName , String lastName , String password , String email) {
+		User user = new User();
+		user.setUsername(username);
+		user.setEmail(email);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setPassword(password);
 		User userCheck = usersRepo.findUsersByUsername(user.getUsername());
-		String passoword = passwordEncoder.encode(user.getPassword());
 		if( userCheck == null){	
-			user.setPassword(passoword);
 			usersRepo.save(user);
 			MessagesResponse registerResponce= new MessagesResponse("SUCCESS", "User registration complete."
 					,String.valueOf(user.getRole()));
 			return  registerResponce;
 		}
-		return new MessagesResponse("FAIL", "DUPLICATE USERNAME"
+		return new MessagesResponse("FAILED", "DUPLICATE USERNAME"
 				,"Username : " + String.valueOf(userCheck.getUsername())+" exist.Plz provide new username");
 	}
 

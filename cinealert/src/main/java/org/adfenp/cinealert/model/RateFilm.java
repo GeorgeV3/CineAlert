@@ -31,14 +31,14 @@ public class RateFilm implements Serializable {
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="usrID" , nullable=false)
-	@JsonBackReference
+	@JsonBackReference(value="user")
 
 	private User user;
 
 	//bi-directional many-to-one association to Film
 	@ManyToOne
 	@JoinColumn(name="flmID" , nullable=false)
-	@JsonBackReference
+	@JsonBackReference(value="film")
 
 	private Film film;
 

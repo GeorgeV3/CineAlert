@@ -66,7 +66,7 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		users11.setEmail("ferfr@");
 		users11.setLastName("verri");
 		users11.setFirstName("george");
-		users11.setPassword("ede");
+		users11.setPassword("123456");
 		users11.setRole("admin");
 		users11.setStatus("active");
 		users11.setUsername("skadi555");
@@ -76,7 +76,7 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		users22.setEmail("ferfr@frfr");
 		users22.setLastName("verri");
 		users22.setFirstName("george");
-		users22.setPassword("ede");
+		users22.setPassword("123456");
 		users22.setRole("admin");
 		users22.setStatus("active");
 		users22.setUsername("skadi2");
@@ -86,7 +86,7 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		users33.setEmail("ferfr@yahoo.gr");
 		users33.setLastName("gianoulis");
 		users33.setFirstName("panos");
-		users33.setPassword("1234");
+		users33.setPassword("123456");
 		users33.setUsername("skadi3");
 		usersRepo.save(users33);
 		

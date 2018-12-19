@@ -55,7 +55,7 @@ public class Message implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="receiver")
-	@JsonBackReference
+	@JsonBackReference(value="receiver")
 	private User receiver;
 
 

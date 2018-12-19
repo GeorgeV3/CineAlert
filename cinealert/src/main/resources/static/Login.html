@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login1</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/Image_center.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="styles.css"/>
+     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+</head>
+
+<body>
+   	<nav
+		class="navbar navbar-light navbar-expand-md navigation-clean-search"
+		style="background-color: #82c6f8;">
+		<div class="container">
+			<a class="navbar-brand" href="Home.html">CineAlert</a>
+			<button class="navbar-toggler" data-toggle="collapse"
+				data-target="#navcol-1">
+				<span class="sr-only">Toggle navigation</span><span
+					class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navcol-1">
+				<ul class="nav navbar-nav">
+					<li class="nav-item" role="presentation"><a
+						class="nav-link active" href="AboutUs.html">About us</a></li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						href="#">Contact us</a></li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						href="#">Donate</a></li>
+				</ul>
+				<form class="form-inline mr-auto" target="_self">
+					<div class="form-group">
+						<label for="search-field"><i class="fa fa-search"
+							style="color: rgb(116, 60, 60);"></i></label><input
+							class="form-control search-field" type="search" name="search"
+							id="search-field" style="background-color: #bfb8b8;">
+					</div>
+				</form>
+				
+			
+			</div>
+			
+		</div>
+		
+				<div id="koubaki" style="margin-right:1%">
+<button id="mapbutton" type="button"  onclick=" window.open('https://www.google.com/maps/place/Coffee+Island/@37.980772,23.7300943,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a39f7f275:0x59f0c81708e88bf!8m2!3d37.980772!4d23.732283','_blank')">View Map</button>
+</div>
+		  <a style="margin-right:1%" class="btn btn-light action-button" role="button"
+					href="Register.html">Sign<br>up
+				</a>
+				<a class="btn btn-light action-button" role="button"
+					href="Login.html">Log<br>in
+					</a>
+	</nav>
+	
+    <div class="login-clean">
+        <form method="POST" name="registration" id="form" >
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><width="200px" class="center"></div>
+            <div class="form-group"><input class="form-control"  name="username" id="username" placeholder="Username"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" id = "password" placeholder="Password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" id="b1" type="submit">Log In</button>
+            
+            </div><a href="forgotpass.html" class="forgot">Forgot your email or password?</a></form>
+    </div>
+    
+     <div class="footer-basic">
+        <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">About us</a></li>
+                <li class="list-inline-item"><a href="#">Donate</a></li>
+              
+            </ul>
+            <p class="copyright">CineAlert© 2019</p>
+        </footer>
+    </div>
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src=" https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+	<script src=" https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    
+    <script src="form-validation.js"></script>
+    
+    <script type="text/javascript">
+    
+    
+    
+   	$(function() {
+		  $('#form').on('submit', function(e) {
+		    e.preventDefault();
+		    var item = {"username": 'skadi3' , "password": '123456'};
+		    $.ajax({
+		      url: '/login',
+		      type: 'POST',
+		      contentType: 'application/json',
+		      data: item,
+		      dataType: "json",
+		      success: function() {
+		        console.log('hello');
+		      },
+		      error: function() {
+		        console.log('error');
+		      }
+		    });
+		  });
+		});  
+    </script>
+    
+</body>
+
+</html>

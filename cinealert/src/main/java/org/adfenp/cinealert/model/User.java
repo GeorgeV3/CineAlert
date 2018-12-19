@@ -5,7 +5,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -16,6 +17,9 @@ import java.util.List;
 @Table(name="users")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	@Transient
+	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); 
 
 	@Id
 	@GeneratedValue(
@@ -117,7 +121,7 @@ public class User implements Serializable {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = passwordEncoder.encode(password);
 	}
 
 	public String getRole() {
