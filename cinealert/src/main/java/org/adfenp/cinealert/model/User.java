@@ -1,6 +1,7 @@
 package org.adfenp.cinealert.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -33,8 +34,12 @@ public class User implements Serializable {
 	private String firstName;
 	@Column( nullable=false , length=25)
 	private String lastName;
-	@Column( nullable=false , length=25)
+	@Column( name="password" , nullable=false , length=250)
 	private String password;
+	
+
+	
+	
 	@Column( nullable=false , length=25)
 	private String role;
 	@Column( nullable=false , length=25)
@@ -108,7 +113,7 @@ public class User implements Serializable {
 	}
 
 	public String getPassword() {
-		return this.password;
+		return (this.password);
 	}
 
 	public void setPassword(String password) {
