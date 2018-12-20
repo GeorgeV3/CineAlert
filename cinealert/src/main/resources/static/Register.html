@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -15,6 +14,8 @@
 <link rel="stylesheet" href="styles.css" />
 <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
 <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
 </head>
@@ -44,7 +45,7 @@
 						<label for="search-field"><i class="fa fa-search"
 							style="color: rgb(116, 60, 60);"></i></label><input
 							class="form-control search-field" type="search" name="search"
-							id="search-field" style="background-color: #bfb8b8;">
+							id="search-field" style="background-color: #e7e7e7;" placeholder="Search">
 					</div>
 				</form>
 
@@ -53,16 +54,18 @@
 
 		</div>
 
+
 		<div id="koubaki" style="margin-right: 1%">
-			<button id="mapbutton" type="button"
-				onclick=" window.open('https://www.google.com/maps/place/Coffee+Island/@37.980772,23.7300943,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a39f7f275:0x59f0c81708e88bf!8m2!3d37.980772!4d23.732283','_blank')">View
-				Map</button>
+			<button id="mapbutton"  class="btn btn-link btn-block"  type="button"
+				onclick=" window.open('https://www.google.com/maps/place/Coffee+Island/@37.980772,23.7300943,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a39f7f275:0x59f0c81708e88bf!8m2!3d37.980772!4d23.732283','_blank')"><span style="color:black">Find us </span><span style="color: "><i class="material-icons">place</i></span>
+				</button>
 		</div>
-		<a style="margin-right: 1%" class="btn btn-light action-button"
-			role="button" href="Register.html">Sign<br>up
-		</a> <a class="btn btn-light action-button" role="button"
-			href="Login.html">Log<br>in
+		<a class="btn btn-dark action-button" role="button"
+			href="Login.html">Login
 		</a>
+		<a  class="btn btn-light action-button"
+			role="button" href="Register.html">Sign up
+		</a> 
 	</nav>
 
 	<div class="register-photo">
@@ -72,7 +75,8 @@
 					<strong>Create</strong> an account.
 				</h2>
 				<input class="form-control" type="text" name="username"
-					id="username" placeholder="Username"> <input
+					id="username" placeholder="Username">
+					 <input
 					class="form-control" type="text" name="firstName" id="firstName"
 					placeholder="Name"> <input class="form-control" type="text"
 					name="lastName" id="lastName" placeholder="Surname"> <input
@@ -144,38 +148,7 @@
     	});
 	});  
   
-  // {"username": $('#username').val(), "password": $('#password').val(), "firstName": $('#firstName').val() , "lastName" : $('#lastName').val() ,"email": $('#email').val() }
-    
-   /* 
-    	 $(function() {
-    		  $('#form').on('submit', function(e) {
-    		    e.preventDefault();
-    		    var token = $('#csrfToken').val();
-    		    var header = $('#csrfHeader').val(); 
-    		    var url = ''
-    		    var item = {"username": 'varethika', "password": '123456', "firstName": 'dedwdwedewd' , "lastName" : 'wedweded' ,"email": 'dwedwedewdwed'}
-    		    $.ajax({
-    		      url: '/register',
-    		      method : 'POST',
-    		      contentType: 'application/json',
-    		      data: {"username": 'varethika', "password": '123456', "firstName": 'dedwdwedewd' , "lastName" : 'wedweded' ,"email": 'dwedwedewdwed'},
-    		      dataType: "json",
-    		      
-    		        async : true,
-    		      beforeSend: function(xhr) {
-    		          xhr.setRequestHeader("Accept", "application/json");
-    		          xhr.setRequestHeader("Content-Type", "application/json");
-    		          xhr.setRequestHeader(header, token);
-    		      },  
-    		      success: function() {
-    		        console.log('hello');
-    		      },
-    		      error: function() {
-    		        console.log('error');
-    		      }
-    		    });
-    		  });
-    		});  */
+
     </script>
 
 </body>

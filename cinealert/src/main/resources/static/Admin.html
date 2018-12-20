@@ -50,6 +50,9 @@ tr:nth-child(even) {
 </head>
 
 <body>
+
+<h1>ADMIN PAGE</h1>
+
 	<nav
 		class="navbar navbar-light navbar-expand-md navigation-clean-search"
 		style="background-color: #82c6f8;">
@@ -129,7 +132,7 @@ tr:nth-child(even) {
 		
 	</div>
 	
-<form name="contactform" method="post" id = "nmsg">
+<form name="contactform" method="post" action="send_form_email.php">
 <table style="width:450px" id="newmsg">
 
 <tr>
@@ -137,7 +140,7 @@ tr:nth-child(even) {
   <label for="email">Email Address</label>
  </td>
 <td valign="top">
-  <input type="text" name="email" maxlength="80" size="30" name="sender" id = "to">
+  <input type="text" name="email" maxlength="80" size="30">
  </td>
 </tr>
 <tr>
@@ -145,7 +148,7 @@ tr:nth-child(even) {
   <label for="title">Title</label>
  </td>
 <td valign="top">
-  <input type="text" name="telephone" maxlength="30" size="30" name="title" id = "msgttl">
+  <input type="text" name="telephone" maxlength="30" size="30">
  </td>
 </tr>
 <tr>
@@ -153,7 +156,7 @@ tr:nth-child(even) {
   <label for="comments">Message</label>
  </td>
 <td valign="top">
-  <textarea name="comments" maxlength="1000" cols="25" rows="6" name="text" id="msgcont"></textarea>
+  <textarea name="comments" maxlength="1000" cols="25" rows="6"></textarea>
  </td>
 </tr>
 <tr>
@@ -195,13 +198,12 @@ tr:nth-child(even) {
 
 	<script type="text/javascript">
 	
-	$("#b2").click(function() {
+	$("#b1").click(function() {
 		$("#newmsg").hide();
 		$('#test tr').remove();
-		var urls = '/findReceivedMSGs/' + localstorage.username;
 		$.ajax({
 			type: 'GET',
-			url: urls,
+			url: '/findReceivedMSGs/2',
 			success: function (humans){
  				$("#test").append('<tr ><th>Title</th><th>Description</th><th>Sender</th><th>Date</th></tr>')
 			 	$.each(humans, function (i, human){
@@ -212,13 +214,12 @@ tr:nth-child(even) {
 		});
 	});  
 	
-	$("#b1").click(function() {
+	$("#b2").click(function() {
 		$('#newmsg').hide();
 		$('#test2 tr').remove();
-		var urll = '/findSendMSGs/' + localstorage.username;
 		$.ajax({
 			type: 'GET',
-			url: urll,
+			url: '/findSendMSGs/skadi555',
 			success: function (humans){
  				$("#test2").append('<tr ><th>Title</th><th>Description</th><th>Receiver</th><th>Date</th></tr>')
 			 	$.each(humans, function (i, human){
@@ -234,39 +235,6 @@ tr:nth-child(even) {
 		
 		$("#newmsg").show();
 	});
-	
-	
-	$('#nmsg').submit(function(event) {
-    	var toemail = $("#to").val();
-    	console.log(toemail);
-    	
-    	event.preventDefault();
-    	var formdata = $(form).serialize();
-    	$.ajax({
-    	    
-    	    type: 'POST',
-    	    url: '/sendMSG',
-    	    data: formdata,
-    	  /*   processData: false, */
-    	    success: function(data){
-    	        /* $('#response pre').html( JSON.stringify( data )); */
-    	        
-    	        if(data.status == "FAILED"){
-    	        	
-    	        		
-    	        }
-    	        if(data.status == "SUCCESS") {
-    	        	
-    	        	alert(data.message);
-    	        	
-    	        }
-    	    },
-    	    error: function( jqXhr, textStatus, errorThrown ){
-   	        alert( " fail connection" );
-    	    }
-    	});
-	}); 
-
 	
 	</script>
 </body>

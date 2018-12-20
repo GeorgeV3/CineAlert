@@ -67,7 +67,7 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		users11.setLastName("verri");
 		users11.setFirstName("george");
 		users11.setPassword("123456");
-		users11.setRole("admin");
+		users11.setRole("critic");
 		users11.setStatus("active");
 		users11.setUsername("skadi555");
 		usersRepo.save(users11);
