@@ -68,31 +68,19 @@
 		</a> 
 	</nav>
 
-	<div class="register-photo">
+	 <div class="register-photo">
 		<div class="form-container col-xs-12" style="width: 600px;">
-			<form method="post" name="registration" id="form">
-				<h2 class="text-center">
-					<strong>Create</strong> an account.
-				</h2>
-				<input class="form-control" type="text" name="username"
-					id="username" placeholder="Username">
-					 <input class="form-control" type="text" name="firstName" id="firstName"	placeholder="Name"> 
-					 <input class="form-control" type="text"name="lastName" id="lastName" placeholder="Surname"> 
-					 <input class="form-control" type="email" name="email" id="email"placeholder="Email">
-					 <input class="form-control" type="password" id="password" name="password" placeholder="Password"> 
-
-				<div class="form-group">
-					<div class="form-check">
-						<label class="form-check-label"><input
-							class="form-check-input" type="checkbox">I agree to the
-							license terms.</label>
-					</div>
-				</div>
-				<div class="form-group">
-				 <button id="b1" class="btn btn-primary btn-block" type="submit">Sign Up</button></div><a href="Login.html" class="already">You already have an account? Login here.</a></form>
-	
-		</div>
-	</div>
+        <form method="post" name="registration" id="form">
+            <h2 class="text-center"> <strong>Sign</strong> in</h2>
+            <div class="illustration"><width="200px" class="center"></div>
+            <div class="form-group"><input class="form-control" type="text" name="username" id="username" placeholder="Username"></div>
+            <div class="form-group"><input class="form-control" type="text" name="firstName" id = "firstName" placeholder="firstName"></div>
+            <div class="form-group"><input class="form-control" type="text" name="lastName" id = "lastName" placeholder="lastName"></div>
+            <div class="form-group"><input class="form-control" type="email" name="email" id = "email" placeholder="email"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" id = "password" placeholder="Password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" id="getall">Log In</button></div></form>
+    </div>
+    </div>
 	<div class="footer-basic">
 		<footer>
 			<div class="social">
@@ -116,7 +104,7 @@
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src=" https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
 	<script src=" https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
-	<script src="form-validation.js"></script>
+	
 
 	<script type="text/javascript">
     
@@ -131,30 +119,28 @@
     	    data: formdata,
     	  /*   processData: false, */
     	    success: function(data){
-    	        /* $('#response pre').html( JSON.stringify( data )); */
-    	        
-    	        if(data.status == "FAILED"){
-    	        	
+    	        /* $('#response pre').html( JSON.stringify( data )); */  	        
+    	        if(data.status == "FAILED"){   	        	
     	        	alert(data.message);	
     	        }
     	        if(data.status == "SUCCESS") {
     	        	alert(data.message)
-    	
     	        		window.location = '/Home.html';
-    	   
-    	        	
+       	        	
     	        }
     	    },
     	    error: function( jqXhr, textStatus, errorThrown ){
    	        alert( " fail connection" );
-   	     		window.location = '/Register.html';
+   	     		window.location = '/RegisterTEst.html';
     	    }
     	});
 	});  
+    
+    
   
 
     </script>
-
+		<script src="form-validation.js"></script>
 </body>
 
 </html>

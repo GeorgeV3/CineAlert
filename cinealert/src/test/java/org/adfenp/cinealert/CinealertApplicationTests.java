@@ -1,10 +1,10 @@
 package org.adfenp.cinealert;
 import java.util.Date;
 
-import org.adfenp.cinealert.dao.MessageRepo;
-import org.adfenp.cinealert.dao.UsersRepo;
-import org.adfenp.cinealert.model.Message;
-import org.adfenp.cinealert.model.User;
+import org.afdemp.cinealert.dao.MessageRepo;
+import org.afdemp.cinealert.dao.UsersRepo;
+import org.afdemp.cinealert.model.Message;
+import org.afdemp.cinealert.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoFramework;

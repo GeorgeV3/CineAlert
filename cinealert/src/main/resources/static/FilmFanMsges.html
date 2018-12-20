@@ -137,7 +137,7 @@ tr:nth-child(even) {
   <label >To</label>
  </td>
 <td valign="top">
-  <input type="text"  maxlength="80" size="30" name="sender" id = "to">
+  <input type="text"  maxlength="80" size="30" name="username" id = "to">
  </td>
 </tr>
 <tr hidden>
@@ -145,7 +145,7 @@ tr:nth-child(even) {
   <label >To</label>
  </td>
 <td valign="top">
-  <input type="text"  maxlength="80" size="30" name="username" id = "username">
+  <input type="text"  maxlength="80" size="30" name="sender" id = "sender">
  </td>
 </tr>
 <tr>
@@ -232,9 +232,9 @@ tr:nth-child(even) {
 			type: 'GET',
 			url: urll,
 			success: function (humans){
- 				$("#test2").append('<tr ><th>Title</th><th>Description</th><th>Receiver</th><th>Date</th></tr>')
+ 				$("#test2").append('<tr ><th>Title</th><th>Description</th><th>Date</th></tr>')
 			 	$.each(humans, function (i, human){
-					$("#test2").append($("#test2").append('<tr class = "hhh"><td>'+human.title+'</td><td>'+human.text+'</td><td>'+human.sender+'</td><td>'+human.date+'</td></tr>'));
+					$("#test2").append($("#test2").append('<tr class = "hhh"><td>'+human.title+'</td><td>'+human.text+'</td><td>'+human.date+'</td></tr>'));
 					
 				}); 
 			}
@@ -255,7 +255,7 @@ tr:nth-child(even) {
 	
 	
 	$('#form').submit(function(event) {
-		  $('#username').val(username);  
+		  $('#sender').val(username);  
     	
     	
     	event.preventDefault();
@@ -272,7 +272,7 @@ tr:nth-child(even) {
     	        
     	        if(data.status == "FAILED"){
     	        	
-    	        		
+    	        	alert(data.message);
     	        }
     	        if(data.status == "SUCCESS") {
     	        	
