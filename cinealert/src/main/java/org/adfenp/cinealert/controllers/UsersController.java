@@ -61,7 +61,7 @@ public class UsersController {
     }
     
 
-    //me get doulevei me post oxi ....
+    
     @RequestMapping(value = "/register" , method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MessagesResponse> registerUser( User user){
     	return ResponseEntity.status(HttpStatus.OK).body(loginRegisterService.handleRegister(user));

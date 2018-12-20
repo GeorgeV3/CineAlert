@@ -34,7 +34,7 @@ public class MessageService {
 		newMessage.setReceiver(user);
 		newMessage.setMsgDeleteStatus("non-deleted");
 		newMessage.setSender(message.getSender());
-		newMessage.setTitle(message.getText());
+		newMessage.setTitle(message.getTitle());
 		newMessage.setText(message.getText());
 		messageRepo.save(newMessage);
 		MessagesResponse registerResponce= new MessagesResponse("SUCCESS", "Message send."
