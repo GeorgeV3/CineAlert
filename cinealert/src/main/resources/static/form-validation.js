@@ -2,7 +2,7 @@
 $(function() {
   // Initialize form validation on the registration form.
   // It has the name attribute "registration"
-  $("form[name='registration']").validate({
+  $("form[name='register']").validate({
     // Specify validation rules
     rules: {
       // The key name on the left side is the name attribute
