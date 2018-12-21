@@ -1,0 +1,3 @@
+Create a database shema in a DataBase.
+Change the applicatio.properties in src/main/resources to new name of the database and username/password.
+Open a browser and hit http://localhost:8090/Home.html
