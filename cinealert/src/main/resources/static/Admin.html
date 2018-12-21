@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FFNmsg</title>
+<title>Admin</title>
 
 <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
 <link rel="stylesheet" href="assets/css/Footer-Basic.css">
@@ -33,8 +33,11 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/styles.css">
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script type="text/javascript" src="assets/js/myjs.js"></script>
 
+
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <style type="text/css">
 
 td, th {
@@ -46,18 +49,18 @@ td, th {
 tr:nth-child(even) {
 	background-color: #dddddd;
 }
+.tabcontent{display: block; overflow:auto; margin-bottom:200px; }
+table{margin:10px 0 10px 0;}
+
 </style>
 </head>
 
 <body>
-
-<h1>ADMIN PAGE</h1>
-
 	<nav
 		class="navbar navbar-light navbar-expand-md navigation-clean-search"
 		style="background-color: #82c6f8;">
 		<div class="container">
-			<a class="navbar-brand" href="Home.html">CineAlert</a>
+			<a class="navbar-brand" href="Home.html"><img width="25%" src="https://i.imgur.com/nNLf7t6.gif" border=0></a>
 			<button class="navbar-toggler" data-toggle="collapse"
 				data-target="#navcol-1">
 				<span class="sr-only">Toggle navigation</span><span
@@ -66,11 +69,11 @@ tr:nth-child(even) {
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="nav navbar-nav">
 					<li class="nav-item" role="presentation"><a
-						class="nav-link active" href="AboutUs.html">About us</a></li>
+						class="nav-link active" href="AboutUs.html"><strong>About us</strong></a></li>
 					<li class="nav-item" role="presentation"><a class="nav-link"
-						href="#">Contact us</a></li>
+						href="#"><strong>Contact us</strong></a></li>
 					<li class="nav-item" role="presentation"><a class="nav-link"
-						href="#">Donate</a></li>
+						href="#"><strong>Donate</strong></a></li>
 				</ul>
 				<form class="form-inline mr-auto" target="_self">
 					<div class="form-group">
@@ -89,15 +92,13 @@ tr:nth-child(even) {
 
 		<div id="koubaki" style="margin-right: 1%">
 			<button id="mapbutton"  class="btn btn-link btn-block"  type="button"
-				onclick=" window.open('https://www.google.com/maps/place/Coffee+Island/@37.980772,23.7300943,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a39f7f275:0x59f0c81708e88bf!8m2!3d37.980772!4d23.732283','_blank')"><span style="color:black">Find us </span><span style="color: "><i class="material-icons">place</i></span>
+				onclick=" window.open('https://www.google.com/maps/place/Coffee+Island/@37.980772,23.7300943,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a39f7f275:0x59f0c81708e88bf!8m2!3d37.980772!4d23.732283','_blank')"><span style="color:black"><strong>Find us</strong> </span><span style="color: "><i class="material-icons">place</i></span>
 				</button>
 		</div>
 		<a class="btn btn-dark action-button" role="button"
-			href="Login.html">Login
+			href="Login.html"> Sign out
 		</a>
-		<a  class="btn btn-light action-button"
-			role="button" href="Register.html">Sign up
-		</a> 
+	 
 	</nav>
 	
 
@@ -106,13 +107,12 @@ tr:nth-child(even) {
 	<br>
 
 	<div class="tab">
-		<button class="tablinks" id="b1" onclick="openCity(event, 'Inbox')">Inbox</button>
-		<button class="tablinks" id="b2" onclick="openCity(event, 'Outbox')">Outbox</button>
-		<button class="tablinks" id="b3" onclick="openCity(event, 'Deleted')">Deleted</button>
-		<button class="tablinks" id="b4" onclick="openCity(event, 'Deleted')">New Message</button>
+		<button class="tablinks" id="b1" onclick="openCity(event, 'Users')">Manage Users</button>
+		<button class="tablinks" id="b2" onclick="openCity(event, 'Msges')">View All Messages</button>
+	
 	</div>
 
-	<div id="Inbox" class="tabcontent">
+	<div id="Users" class="tabcontent">
 		
 		
 
@@ -120,121 +120,93 @@ tr:nth-child(even) {
 
 	</div>
 
-	<div id="Outbox" class="tabcontent">
+	<div id="Msges" class="tabcontent">
 		
 		<table id="test2"></table>
 		
 	</div>
 
-	<div id="Deleted" class="tabcontent">
-		
-		
-		
+	<div id="divaki2" style="z-index:10">
+<div class="form-group" id="divaki" style="width:200px">
+  <label for="sel1">Select list:</label>
+  <select class="form-control" id="sel1">
+    <option>FilmFan</option>
+    <option>Critic</option>
+   <option>Delete User</option>
+  </select>
+</div>
+	<button class="btn btn-default">Submit Changes</button>
 	</div>
 	
-<form name="contactform" method="post" action="send_form_email.php">
-<table style="width:450px" id="newmsg">
 
-<tr>
-<td valign="top">
-  <label for="email">Email Address</label>
- </td>
-<td valign="top">
-  <input type="text" name="email" maxlength="80" size="30">
- </td>
-</tr>
-<tr>
-<td valign="top">
-  <label for="title">Title</label>
- </td>
-<td valign="top">
-  <input type="text" name="telephone" maxlength="30" size="30">
- </td>
-</tr>
-<tr>
-<td valign="top">
-  <label for="comments">Message</label>
- </td>
-<td valign="top">
-  <textarea name="comments" maxlength="1000" cols="25" rows="6"></textarea>
- </td>
-</tr>
-<tr>
-<td colspan="2" style="text-align:center">
-  <input type="submit" value="Submit" >   <a href="http://www.freecontactform.com/email_form.php">Email Form</a>
- </td>
-</tr>
-</table>
-</form>	
-	
-  <div class="footer-basic">
-        <footer>
-            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Home</a></li>
-                <li class="list-inline-item"><a href="#">About us</a></li>
-                <li class="list-inline-item"><a href="#">Donate</a></li>
-              
-            </ul>
-            <p class="copyright">CineAlert© 2019</p>
-        </footer>
-    </div>
 
 
 	<script type="text/javascript">
 		$(function() {
-			$("#Outbox").hide();
-			$("#Deleted").hide();
-			$("#newmsg").hide();
+			$("#divaki2").hide();
+			$("#Msges").hide();
+			
 		});
 	</script>
 
 
 
-	<script type="text/javascript" src="assets/js/myjs.js"></script>
-
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	
 
 	<script type="text/javascript">
 	
-	$("#b1").click(function() {
-		$("#newmsg").hide();
-		$('#test tr').remove();
-		$.ajax({
-			type: 'GET',
-			url: '/findReceivedMSGs/2',
-			success: function (humans){
- 				$("#test").append('<tr ><th>Title</th><th>Description</th><th>Sender</th><th>Date</th></tr>')
-			 	$.each(humans, function (i, human){
-					$("#test").append($("#test").append('<tr class = "hhh"><td>'+human.title+'</td><td>'+human.text+'</td><td>'+human.sender+'</td><td>'+human.date+'</td></tr>'));
-					
-				}); 
-			}
-		});
-	});  
+	var username = localStorage.getItem("username");
+	var role = localStorage.getItem("useRole");
 	
 	$("#b2").click(function() {
-		$('#newmsg').hide();
-		$('#test2 tr').remove();
+		
+		$('#test tr').remove();
+		var urls = '/findAllMsg';
 		$.ajax({
 			type: 'GET',
-			url: '/findSendMSGs/skadi555',
+			url: urls,
 			success: function (humans){
- 				$("#test2").append('<tr ><th>Title</th><th>Description</th><th>Receiver</th><th>Date</th></tr>')
+ 				$("#test").append('<tr ><th>Title</th><th>Description</th><th>Sender</th><th>Date</th><th>Action</th></tr>')
 			 	$.each(humans, function (i, human){
-					$("#test2").append($("#test2").append('<tr class = "hhh"><td>'+human.title+'</td><td>'+human.text+'</td><td>'+human.sender+'</td><td>'+human.date+'</td></tr>'));
+					$("#test").append($("#test").append('<tr class = "hhh"><td>'+human.title+'</td><td>'+human.text+'</td><td>'+human.sender+'</td><td>'+human.date+'</td><td><button class="btn btn-info">Edit</button></td></tr>'));
 					
 				}); 
 			}
 		});
 	});  
 	
-	$("#b4").click(function() {
-		// alert("The paragraph was clicked.");  OK up to here
+	$("#b1").click(function() {
 		
-		$("#newmsg").show();
+		$('#test tr').remove();
+		var urll = '/getUsers';
+		$.ajax({
+			type: 'GET',
+			url: urll,
+			success: function (humans){
+ 				$("#test").append('<tr ><th>Username</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Action</th></tr>');
+ 				
+			 	$.each(humans, function (i, human){
+			 		
+			 		$("#test").append($("#test").append('<tr class = "hhh"><td>'+human.username+'</td><td>'+human.firstName+'</td><td>'+human.lastName+'</td><td>'+human.email+'</td><td><button class="btn btn-info" id="koumpaki">Edit</button></td></tr>'));
+					
+				}); 
+			}
+		});
+	});  
+	
+	
+	$('#koumpaki').click(function() {
+		$('#divaki2').show();
+		
 	});
+		
+	// show the message box.
+
+	
+	
+	
+	
+
 	
 	</script>
 </body>

@@ -20,13 +20,13 @@ public class LoginRegisterService {
 	public MessagesResponse handleLogin(String username, String password){
 		
 		User user = usersRepo.findUsersByUsername(username);
-		String passwordDB="";
+//		String passwordDB="";
 		
 		if( user == null ){
 			MessagesResponse loginResponse= new MessagesResponse("FAILED", "WRONG USERNAME");
 			return  loginResponse;
 		}
-		if( passwordEncoder.matches(password, passwordDB = user.getPassword())) {
+		if( passwordEncoder.matches(password, user.getPassword())) {
 			return new MessagesResponse("SUCCESS", "LOGIN IN", String.valueOf(user.getRole()));
 		}
 			

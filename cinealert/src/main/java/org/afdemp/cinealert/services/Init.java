@@ -1,7 +1,7 @@
 package org.afdemp.cinealert.services;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 
 import org.afdemp.cinealert.dao.ActorsRepo;
 import org.afdemp.cinealert.dao.ArticleRepo;
@@ -63,23 +63,23 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		filmActorREpo.deleteAll();
 		log.info("Creating new user..");
 		User users11 = new User();
-		users11.setEmail("ferfr@");
-		users11.setLastName("verri");
-		users11.setFirstName("george");
+		users11.setEmail("ferfr@yahoo.gr");
+		users11.setLastName("giannis");
+		users11.setFirstName("panoulis");
 		users11.setPassword("123456");
 		users11.setRole("critic");
 		users11.setStatus("active");
-		users11.setUsername("skadi555");
+		users11.setUsername("critic");
 		usersRepo.save(users11);
 		
 		User users22 = new User();
-		users22.setEmail("ferfr@frfr");
+		users22.setEmail("ferfr@hotmal.com");
 		users22.setLastName("verri");
 		users22.setFirstName("george");
-		users22.setPassword("123456");
+		users22.setPassword("GOD");
 		users22.setRole("admin");
 		users22.setStatus("active");
-		users22.setUsername("skadi2");
+		users22.setUsername("GOD");
 		usersRepo.save(users22);
 		
 		User users33 = new User();
@@ -87,7 +87,7 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		users33.setLastName("gianoulis");
 		users33.setFirstName("panos");
 		users33.setPassword("123456");
-		users33.setUsername("skadi3");
+		users33.setUsername("skadi");
 		usersRepo.save(users33);
 		
 		Message message = new Message();
@@ -144,49 +144,47 @@ public class Init implements ApplicationListener<ApplicationReadyEvent> {
 		
 		
 		
-		film.setTitle("I aiwnia liakada");
-		film.setDescription("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		film.setTitle("Hellboy");
+		film.setDescription("Based on the graphic novels by Mike Mignola, Hellboy, caught between the worlds of the supernatural and human, battles an ancient sorceress bent on revenge. ");
 		film.setLength(120);
-		film.setReleaseYr(2002-02-11);
-		film.setGenre("Thriller-Romance-Sex&Drungs");
-		
-		
+		film.setReleaseYr(2019-02-11);
+		film.setGenre("Action, Adventure, Fantasy ");
 		films.add(film);
 		
 		filmRepo.save(film);
 		
 		actorsRepo.saveAll(actorss);
 		Film film2= new Film();
-		film2.setTitle("Η αιωνια λιακαδα");
-		film2.setDescription("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		film2.setLength(120);
-		film2.setReleaseYr(2002-02-11);
+		film2.setTitle("Το τεμπελόσκυλο");
+		film2.setDescription("Ο Πολύδωρος (Δημήτρης Παπαμιχαήλ) είναι ένας επαγγελματίας τεμπέλης, ο οποίος ξαφνικά αρχίζει να εργάζεται ως εισπράκτορας χρεών, για λογαριασμό της εταιρείας στην οποία εργάζεται και ο αδερφός του (Νίκος Βασταρδής).");
+		film2.setLength(87);
+		film2.setReleaseYr(1963-02-11);
 		film2.setGenre("Thriller-Romance-Sex&Drungs");
 		filmRepo.save(film2);
 		
 		Film film3= new Film();
-		film3.setTitle("I aiwnia liakada");
-		film3.setDescription("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		film3.setTitle("Aquaman");
+		film3.setDescription("Arthur Curry learns that he is the heir to the underwater kingdom of Atlantis, and must step forward to lead his people and be a hero to the world. ");
 		film3.setLength(120);
-		film3.setReleaseYr(2002-02-11);
-		film3.setGenre("Thriller-Romance-Sex&Drungs");
+		film3.setReleaseYr(2018-02-11);
+		film3.setGenre("Action-Adventure-Fantasy-Sci-Fi");
 		
 		filmRepo.save(film3);
 		
 		Film film4= new Film();
-		film4.setTitle("I aiwnia liakada");
-		film4.setDescription("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		film4.setTitle("Mary Poppins Returns");
+		film4.setDescription("Decades after her original visit, the magical nanny returns to help the Banks siblings and Michael's children through a difficult time in their lives. ");
 		film4.setLength(120);
 		film4.setReleaseYr(2002-02-11);
-		film4.setGenre("Thriller-Romance-Sex&Drungs");
+		film4.setGenre("Comedy-Family-Fantasy-Musical");
 		filmRepo.save(film4);
 		
 		Film film5= new Film();
-		film5.setTitle("I aiwnia liakada");
-		film5.setDescription("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		film5.setTitle("Bumblebee");
+		film5.setDescription("On the run in the year of 1987, Bumblebee finds refuge in a junkyard in a small Californian beach town. Charlie, on the cusp of turning 18 and trying to find her place in the world, discovers Bumblebee, battle-scarred and broken. ");
 		film5.setLength(120);
 		film5.setReleaseYr(2002-02-11);
-		film5.setGenre("Thriller-Romance-Sex&Drungs");
+		film5.setGenre("Action-Adventure-Sci-Fi");
 		filmRepo.save(film5);
 		
 		
